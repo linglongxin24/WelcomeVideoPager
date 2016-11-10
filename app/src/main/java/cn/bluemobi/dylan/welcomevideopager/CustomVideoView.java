@@ -35,19 +35,19 @@ public class CustomVideoView extends VideoView {
      *
      * @param uri
      */
-    public void playVideo( Uri uri) {
+    public void playVideo(Uri uri) {
         if (uri == null) {
             throw new IllegalArgumentException("Uri can not be null");
         }
-        //设置播放路径
+        /**设置播放路径**/
         setVideoURI(uri);
-        //开始播放
+        /**开始播放**/
         start();
         setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override
             public void onPrepared(MediaPlayer mp) {
-                //设置循环播放
+                /**设置循环播放**/
                 mp.setLooping(true);
             }
         });
