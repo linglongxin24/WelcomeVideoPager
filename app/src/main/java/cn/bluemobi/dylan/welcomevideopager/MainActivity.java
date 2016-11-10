@@ -1,13 +1,11 @@
 package cn.bluemobi.dylan.welcomevideopager;
 
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化数据
+     * 初始化数据,添加三个Fragment
      */
     private void initData() {
         fragments = new ArrayList<>();
@@ -66,17 +64,22 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(fragment3);
     }
 
-
+    /**
+     * 设置ViewPager的适配器和滑动监听
+     */
     private void initView() {
         vp.setOffscreenPageLimit(3);
-        vp.setAdapter(new MyPageAdpater(getSupportFragmentManager()));
+        vp.setAdapter(new MyPageAdapter(getSupportFragmentManager()));
         vp.addOnPageChangeListener(new MyPageChangeListener());
     }
 
-    private class MyPageAdpater extends FragmentPagerAdapter {
+    /**
+     * ViewPager适配器
+     */
+    private class MyPageAdapter extends FragmentPagerAdapter {
 
 
-        public MyPageAdpater(FragmentManager fm) {
+        public MyPageAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -91,12 +94,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * ViewPager滑动页面监听器
+     */
     private class MyPageChangeListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         }
 
+        /**
+         * 根据页面不同动态改变红点和在最后一页显示立即体验按钮
+         *
+         * @param position
+         */
         @Override
         public void onPageSelected(int position) {
             bt_start.setVisibility(View.GONE);
@@ -105,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
             iv3.setImageResource(R.mipmap.dot_normal);
             if (position == 0) {
                 iv1.setImageResource(R.mipmap.dot_focus);
-            }else if(position==1){
+            } else if (position == 1) {
                 iv2.setImageResource(R.mipmap.dot_focus);
-            }else {
+            } else {
                 iv3.setImageResource(R.mipmap.dot_focus);
                 bt_start.setVisibility(View.VISIBLE);
             }

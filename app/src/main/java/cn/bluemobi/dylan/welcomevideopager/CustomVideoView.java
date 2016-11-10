@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.VideoView;
 
 /**
+ * 可以播放视频的View
  * Created by yuandl on 2016-11-10.
  */
 
@@ -33,7 +34,7 @@ public class CustomVideoView extends VideoView {
     /**
      * 播放视频
      *
-     * @param uri
+     * @param uri 播放地址
      */
     public void playVideo(Uri uri) {
         if (uri == null) {
