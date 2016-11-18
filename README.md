@@ -329,3 +329,5 @@ public class MainActivity extends AppCompatActivity {
 ```
 #三.[GitHub](https://github.com/linglongxin24/WelcomeVideoPager)
  
+>注意：如果视频是有声音的话是会有问题的，由于Fragment的预加载机制。具体解决方案请看这里[Android中ViewPager+Fragment取消(禁止)预加载延迟加载(懒加载)问题解决方案](http://blog.csdn.net/linglongxin24/article/details/53205878) 
+在本Demo中可以将GuildFragment替换为Guild2Fragment可以查看解决后的效果。

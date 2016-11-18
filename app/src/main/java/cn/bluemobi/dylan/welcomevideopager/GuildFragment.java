@@ -39,8 +39,8 @@ public class GuildFragment extends Fragment {
      * 记得在销毁的时候让播放的视频终止
      */
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (customVideoView != null) {
             customVideoView.stopPlayback();
         }
